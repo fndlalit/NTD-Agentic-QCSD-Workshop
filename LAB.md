@@ -1,16 +1,39 @@
 # Workshop Lab — Copy-Paste Exercises
 
-Four focused exercises across the SDLC on this checkout app — **Ideation → Refinement → Development → CI/CD**. They build on each other: Refinement's product-factors ideas feed Development's test generation; CI/CD then verifies the result. Scoped to stay token-cheap so a whole room can run them on personal API keys.
+A warm-up that builds a **local knowledge graph + a clean memory baseline** (**Exercise 0**), then four SDLC exercises — **Ideation → Refinement → Development → CI/CD** — that each **persist what they learn**, then a **Self-Learning** check that *measures how much the fleet's memory grew*, and a **Personal Adoption Roadmap** to close. The four build on each other: Refinement's product-factors ideas feed Development's test generation; CI/CD then verifies the result. Everything indexes and embeds with a **local on-device model — your code never leaves your machine.** Scoped to stay token-cheap so a whole room can run them on personal API keys.
 
 **Each exercise has two prompts — pick the one for your tool:**
 - **Claude Code Users** — use AQE's skills / agents / orchestrator (`/qcsd-ideation-swarm`, `qe-test-architect`, `qe-queen-coordinator`) for the full multi-agent experience.
 - **Non Claude Code Users** (Copilot, Codex, Gemini, any other tool) — run the *same work as a generic step list*, which goes through the AQE MCP tools your `aqe init --auto --with-<tool>` wired up.
 
-Both versions of an exercise write to the **same report file**, so **Part 4 — Apply PACT** works no matter which you ran.
+Both versions of an exercise write to the **same report file**, so the **Apply PACT** step works no matter which you ran.
 
 **Before you start.** Finish the **Setup** in the [README](./README.md) (clone → `npm install -g agentic-qe@3.10.1` → `aqe init --auto --with-<your-tool>` → `npm install`), then launch your coding agent in this folder. **Don't skip `aqe init`** — it installs AQE's agents, the MCP config, and a local memory DB; without it the prompts have nothing behind them. **Run the exercises in order** — 3 reads 2's output, and 4 verifies the code. All paths are relative to the repo root.
 
-> **Why two versions?** The Claude Code prompts invoke AQE *skills* and the *queen-coordinator*, which orchestrate a fleet of sub-agents (and exercise AQE's learning + model-routing runtime). Those are Claude Code mechanics. On other tools the same QE work runs as an explicit step list through the AQE MCP tools — no skill engine required. Same outcome, different engine.
+> **Why two versions?** Only the four SDLC exercises split by tool: the Claude Code prompts invoke AQE *skills* and the *queen-coordinator* (a fleet of sub-agents); other tools run the same work as an explicit step list. **Exercises 0 and 5 (the knowledge-graph and memory steps) are MCP-tool calls — identical on every tool, no split.**
+
+---
+
+## Exercise 0 — Warm-up: build the local knowledge graph + baseline (≈3 min)
+
+> *Phase:* Setup · *Why:* before the fleet reasons about your code, give it a **map** — and prove the engine runs **on your machine**. AQE indexes the repo with a local ONNX model (`all-MiniLM-L6-v2`, 384-d); **no code leaves your laptop, no API key needed.** Same prompt for every tool.
+
+```
+1. Build the code knowledge graph: index src/ with AQE's code-index tool.
+   Open the saved index file (.agentic-qe/results/code-index/…json) and
+   note the node and edge counts — that's your local map of the codebase.
+2. Confirm the engine is local: get the AQE embedding stats and note the
+   model name (all-MiniLM-L6-v2) and dimension (384).
+3. Capture your starting baseline — you will compare it in Exercise 5:
+   - AQE memory usage → note total entries and vectors
+   - query AQE memory for "*" in namespace "workshop" → note the count
+     (it should be 0 before you've run anything)
+
+Write down the three baseline numbers: KG nodes, memory entries, and the
+workshop-namespace count (0).
+```
+
+> *Heads-up:* the code-index tool's inline summary may show `symbolsExtracted: 0` — ignore it; the **real** counts (nodes / edges) are in the saved `.agentic-qe/results/code-index/…json` file.
 
 ---
 
@@ -46,6 +69,8 @@ acceptance-criteria.md for context), then:
 Save the assessment to reports/01-ideation-assessment.md.
 ```
 
+> **Then persist what you learned** (any tool): store your top finding in AQE memory — key `workshop/ideation/top-finding`, namespace `workshop`, value = the finding text + its severity. You'll count these in Exercise 5.
+
 ---
 
 ## Exercise 2 — Refinement: product factors on the checkout app
@@ -76,6 +101,8 @@ For each dimension, note what the requirements imply and produce
 prioritised test ideas. Save the assessment to
 reports/02-refinement-product-factors.md.
 ```
+
+> **Then persist what you learned** (any tool): store the top product risk in AQE memory — key `workshop/refinement/top-risk`, namespace `workshop`.
 
 ---
 
@@ -111,6 +138,8 @@ short rationale to reports/03-development-tests.md.
 ```
 
 > *Tip:* after this runs, `npm test -- --run tests/lib/payment-retry.architect.test.ts` to see the generated tests actually execute.
+>
+> **Then persist what you learned** (any tool): store a key test-design insight in AQE memory — key `workshop/development/insight`, namespace `workshop`.
 
 ---
 
@@ -146,10 +175,32 @@ Save the consolidated report to reports/04-cicd-quality-assessment.md.
 ```
 
 > *Note:* this app keeps its testable logic in `src/lib/` (payment, Luhn, validation, rate-limiting, email) — there is **no `src/services/`**. Scoped to one file so the run finishes fast; widen to `src/lib/` for a broader verification.
+>
+> **Then persist what you learned** (any tool): store the release verdict + top blocker in AQE memory — key `workshop/cicd/verdict`, namespace `workshop`.
 
 ---
 
-## After the four runs — Apply PACT
+## Exercise 5 — Self-Learning: measure the knowledge you built (≈5 min)
+
+> *Why:* across Exercises 1–4 you told the fleet to **persist** what it learned. Now measure it — the fleet didn't start and end at zero; it accumulated institutional knowledge. Same prompt for every tool.
+
+```
+Compare against the baseline you captured in Exercise 0:
+
+1. Get AQE memory usage again — total entries and vectors. How much did
+   they grow since Exercise 0?
+2. Query AQE memory for "workshop/*" in namespace "workshop" — you should
+   now see the four patterns you persisted (ideation finding, refinement
+   risk, development insight, CI/CD verdict), up from 0.
+3. Retrieve one pattern by key (e.g. workshop/ideation/top-finding) and
+   confirm the full finding comes back — the fleet can recall it.
+```
+
+**Before → after.** At Exercise 0 the `workshop` namespace held **0** patterns; after four exercises it holds **four** — institutional knowledge, accumulated and recallable. In Claude Code this *also* happens automatically in the background (the ReasoningBank hooks + the `AQE Learning: N patterns loaded…` startup banner); here you did it explicitly so you can **see and measure** the substrate. Run this workshop again tomorrow and the fleet starts *warmer* than today — that's the self-learning loop.
+
+---
+
+## After the runs — Apply PACT
 
 For each report, ask:
 
@@ -161,3 +212,18 @@ For each report, ask:
 In pairs, score each report 0–3 per property. Share the most surprising weakness.
 
 > **Compare engines.** If your pair has both a Claude Code user and a non-Claude-Code user, diff the two reports for the same exercise: did the orchestrated swarm surface anything the step-list version missed (or vice versa)? That gap *is* the value of the orchestration layer.
+
+---
+
+## Your Adoption Roadmap — leave with a plan, not just reports
+
+The point isn't the reports — it's what you do Monday. Fill this in for *your* context (≈10 min, in pairs):
+
+1. **My context** — team, stack, and where quality hurts most today: ______
+2. **The 70% I want back** — which clerical testing activity eats my team's time that an agent could take over *first*? ______
+3. **First 3 agents I'll adopt** — pick from the fleet in `.claude/agents/v3/` (e.g. `qe-requirements-validator`, `qe-product-factors-assessor`, `qe-test-architect`, `qe-queen-coordinator`): ______
+4. **First QCSD phase I'll start with** — Ideation gate, Refinement, Development, or CI/CD? ______
+5. **One success metric (2 weeks)** — how will I know it worked? (e.g. contradictions caught *in refinement*, coverage on the riskiest module, faster GO/NO-GO calls): ______
+6. **My first step on Monday** — the single smallest thing I'll actually do: ______
+
+> Keep it small: one agent, one phase, one repo, one metric. The full fleet (30+ agents, MIT-licensed) is already on your machine from `aqe init` — nothing held back. Start where the pain is.

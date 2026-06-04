@@ -10,16 +10,18 @@ The catch: great agents need something real to chew on. So this repo also ships 
 
 ## What you'll do
 
-Four lightweight, copy-paste exercises (in **[LAB.md](./LAB.md)**), one per delivery phase. They build on each other — Refinement's ideas feed Development's tests, then CI/CD verifies the result:
+A short warm-up plus four SDLC exercises and a self-learning close — all copy-paste, in **[LAB.md](./LAB.md)**. The four phases build on each other (Refinement's ideas feed Development's tests; CI/CD verifies the result), and every exercise **persists what it learns** so the fleet's memory grows as you go:
 
-| Phase | Agent(s) | The question it answers |
-|-------|----------|--------------------------|
-| **Ideation** | ideation gate (quality-criteria + risk + requirements) | Before any code — can a QE even do their job with these requirements? GO / CONDITIONAL / NO-GO. |
-| **Refinement** | `qe-product-factors-assessor` | What is this product really made of (SFDIPOT), and where's the risk? |
-| **Development** | `qe-test-architect` | Can it turn those ideas into strong, runnable tests for the riskiest module? |
-| **CI/CD** | `qe-queen-coordinator` (verify) | Is this releasable? Coverage + security + a 90% gate → GO / CONDITIONAL / NO-GO. |
+| Step | Agent(s) / tool | The question it answers |
+|------|-----------------|--------------------------|
+| **0 · Warm-up** | local code-index + on-device embeddings | Build a knowledge-graph map of the code and a clean memory baseline — *on your machine, no API*. |
+| **1 · Ideation** | ideation gate (quality-criteria + risk + requirements) | Before any code — can a QE even do their job with these requirements? GO / CONDITIONAL / NO-GO. |
+| **2 · Refinement** | `qe-product-factors-assessor` | What is this product really made of (SFDIPOT), and where's the risk? |
+| **3 · Development** | `qe-test-architect` | Can it turn those ideas into strong, runnable tests for the riskiest module? |
+| **4 · CI/CD** | `qe-queen-coordinator` (verify) | Is this releasable? Coverage + security + a 90% gate → GO / CONDITIONAL / NO-GO. |
+| **5 · Self-Learning** | AQE memory | Measure it: how much institutional knowledge did the fleet accumulate (0 → 4 patterns)? |
 
-Each exercise has **two prompt versions** — one for **Claude Code users** (skills / orchestrator) and one for **non-Claude-Code users** (generic step list) — so it works on any tool. Then, in **Part 4 — Apply PACT**, you score each agent's output. The exercises are kept lean and token-cheap so a whole room can run them on personal keys.
+The four SDLC exercises have **two prompt versions** — one for **Claude Code users** (skills / orchestrator) and one for **non-Claude-Code users** (generic step list) — so they work on any tool; Steps 0 and 5 are MCP-tool calls identical everywhere. You then **Apply PACT** to score each agent's output, and finish with a **Personal Adoption Roadmap**. Everything is kept lean and token-cheap so a whole room can run it on personal keys.
 
 ---
 
