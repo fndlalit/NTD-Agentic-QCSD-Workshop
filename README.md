@@ -48,7 +48,22 @@ The test suite covers the cart reducer, product catalog, validation, the card/Lu
 
 This codebase is intended to be analyzed. It contains realistic, intentionally planted quality issues across several dimensions — input validation, security hardening, accessibility (WCAG), resilience, and test coverage — so you can practice finding them by hand and with AI-assisted tooling, then compare what each approach surfaces.
 
-**Workshop exercises:** see **[LAB.md](./LAB.md)** for four copy-paste exercises that run Agentic QE agents across the SDLC (Ideation → Refinement → Development → CI/CD), followed by a PACT assessment of the results.
+### Workshop setup (Agentic QE)
+
+This app is the *subject under test*; the AI agents come from **[Agentic QE](https://github.com/proffesor-for-testing/agentic-qe)**, installed from npm — they are **not** bundled in this repo. Run these once, from inside the cloned folder:
+
+```bash
+git clone https://github.com/fndlalit/checkout-demo
+cd checkout-demo
+
+npm install -g agentic-qe@3.10.1   # 1. install the AQE CLI (global)
+aqe init --auto                    # 2. copy the @qe-… agents into ./.claude/agents/
+npm install                        # 3. install this app's own dependencies
+```
+
+Then **open Claude Code in this folder** — it is your workspace root. `aqe init` drops AQE's agents, skills, and a fresh local memory DB into this folder (all gitignored, so nothing is committed back).
+
+**Exercises:** see **[LAB.md](./LAB.md)** — four copy-paste exercises that run AQE agents across the SDLC (Ideation → Refinement → Development → CI/CD), followed by a PACT assessment of the results. All paths in LAB.md are relative to this folder.
 
 > Use **Stripe test keys only**. Never commit real keys or a real `.env.local`.
 
