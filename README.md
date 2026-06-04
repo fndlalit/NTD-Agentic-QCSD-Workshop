@@ -64,7 +64,7 @@ aqe init --auto --with-all-platforms   # or just set up everything at once
 
 > The agents come from **[Agentic QE](https://github.com/proffesor-for-testing/agentic-qe)** via npm — they are **not** bundled in this repo. `aqe init` writes AQE's agents, skills, MCP config, and a fresh local memory DB into this folder (all gitignored, so nothing is committed back).
 >
-> **Invoking agents:** LAB.md shows **Claude Code** syntax (`@qe-qx-partner …`). In other tools you reach the same AQE fleet through its MCP server — phrase it as **"Use qe-qx-partner to …"** and your assistant will pick up the right agent/tool. Claude Code gives the smoothest run of these exercises.
+> **Works the same on every tool.** AQE runs its full agent fleet through a single MCP server, with OpenCode and OpenRouter built in — so the exercises behave the same whether you're in Claude Code, Copilot, Cursor, Kiro, Codex, or Windsurf. Invoke with `@qe-qx-partner …` in Claude Code, or just **"Use qe-qx-partner to …"** in any other tool.
 
 ➡️ **Next:** open **[LAB.md](./LAB.md)** and start with Exercise 1.
 

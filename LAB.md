@@ -6,7 +6,7 @@ The prompts below are deliberately **lean** — they tell each agent *what to lo
 
 **Before you start.** Finish the **Setup** in the [README](./README.md) (clone → `npm install -g agentic-qe@3.10.1` → `aqe init` for your tool → `npm install`), then launch your coding agent in this folder. All paths below are relative to the repo root.
 
-> The prompts use **Claude Code** syntax (`@qe-…`). On another tool (Copilot, Cursor, Kiro, Codex…), drop the `@` and ask in plain language — e.g. **"Use qe-qx-partner to …"** — and your assistant reaches the same agent via AQE's MCP server.
+> The prompts use **Claude Code** syntax (`@qe-…`). On any other tool (Copilot, Cursor, Kiro, Codex…), drop the `@` and ask in plain language — e.g. **"Use qe-qx-partner to …"**. AQE runs the same agent fleet through its MCP server on every platform, so the exercise works identically.
 
 When the four runs are done, head to **Part 4 — Apply PACT** and interrogate the reports.
 
