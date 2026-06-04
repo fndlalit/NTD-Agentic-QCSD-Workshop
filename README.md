@@ -48,6 +48,8 @@ The test suite covers the cart reducer, product catalog, validation, the card/Lu
 
 This codebase is intended to be analyzed. It contains realistic, intentionally planted quality issues across several dimensions — input validation, security hardening, accessibility (WCAG), resilience, and test coverage — so you can practice finding them by hand and with AI-assisted tooling, then compare what each approach surfaces.
 
+**Workshop exercises:** see **[LAB.md](./LAB.md)** for four copy-paste exercises that run Agentic QE agents across the SDLC (Ideation → Refinement → Development → CI/CD), followed by a PACT assessment of the results.
+
 > Use **Stripe test keys only**. Never commit real keys or a real `.env.local`.
 
 ## License
