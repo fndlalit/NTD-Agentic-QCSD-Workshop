@@ -183,7 +183,7 @@ Exercises 1–4; retrieve a specific one by its key if a recent learning
 hasn't surfaced yet). Save the brief to reports/05-handoff-brief.md.
 ```
 
-**Why this is the benefit.** You didn't re-read four reports — the system reconstructed the project's institutional knowledge in seconds, because every exercise saved what it learned. A new teammate, or the next agent run, inherits all of it instantly. In Claude Code this memory is *also* captured automatically in the background (the ReasoningBank hooks + the `AQE Learning: N patterns loaded…` startup banner); here you watched it pay off. Run the workshop again tomorrow and the fleet starts from this knowledge, not from zero — that's the self-learning loop, and it's why agents that *remember* beat agents that start cold every time.
+**Why this is the benefit.** You didn't re-read four reports — the fleet reconstructed the project's institutional knowledge in seconds from what each exercise saved, and a new teammate or the next run inherits all of it instantly. *(In Claude Code this capture is automatic — the ReasoningBank hooks + the `AQE Learning: N patterns loaded…` banner.)* That's the self-learning loop: agents that **remember** beat agents that start cold.
 
 ---
 
