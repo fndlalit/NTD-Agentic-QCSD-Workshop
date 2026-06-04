@@ -25,19 +25,24 @@ Then, in **Part 4 — Apply PACT**, you score each agent's output. The exercises
 
 ## Setup
 
-You're already in this folder (you cloned or downloaded it). Run these once:
+**1. Get this repo.** Clone it (or download the ZIP from the green **Code** button and unzip), then move into the folder:
 
 ```bash
-npm install -g agentic-qe@3.10.1   # 1. the AQE CLI (global, one-time)
-aqe init --auto                    # 2. installs the @qe-… agents into ./.claude/agents/
-npm install                        # 3. the demo app's own dependencies
+git clone https://github.com/fndlalit/NTD-Agentic-QCSD-Workshop
+cd NTD-Agentic-QCSD-Workshop
 ```
 
-Then **open Claude Code in this folder** — it is your workspace root, and all paths in LAB.md are relative to it.
+**2. Install AQE and the demo app's dependencies.** Run these once, from inside the folder:
+
+```bash
+npm install -g agentic-qe@3.10.1   # the AQE CLI (global, one-time)
+aqe init --auto                    # installs the @qe-… agents into ./.claude/agents/
+npm install                        # the demo app's own dependencies
+```
+
+**3. Open Claude Code in this folder** — it is your workspace root, and all paths in LAB.md are relative to it.
 
 > The AI agents come from **[Agentic QE](https://github.com/proffesor-for-testing/agentic-qe)**, installed from npm — they are **not** bundled in this repo. `aqe init` copies the agents, skills, and a fresh local memory DB into this folder (all gitignored, so nothing is committed back).
-
-*(Don't have the repo yet? `git clone https://github.com/fndlalit/NTD-Agentic-QCSD-Workshop && cd NTD-Agentic-QCSD-Workshop`, then run the steps above.)*
 
 ➡️ **Next:** open **[LAB.md](./LAB.md)** and start with Exercise 1.
 

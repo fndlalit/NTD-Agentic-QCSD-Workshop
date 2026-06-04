@@ -4,17 +4,7 @@ Four lightweight, focused exercises that run **individual agents and one curated
 
 The prompts below are deliberately **lean** — they tell each agent *what to look at* and *where to save*, but **not how to think**. That's the point: the methodology (finding contradictions, applying SFDIPOT, designing property tests, running OWASP/WCAG checks) lives inside the agents. Watch what they do *on their own* — then judge it in **Part 4 — Apply PACT**.
 
-**Before you start.** Run these once, in order:
-
-```bash
-git clone https://github.com/fndlalit/NTD-Agentic-QCSD-Workshop
-cd NTD-Agentic-QCSD-Workshop
-npm install -g agentic-qe@3.10.1   # installs the AQE CLI (global)
-aqe init --auto                    # installs the @qe-… agents into ./.claude/agents/
-npm install                        # the app's own dependencies
-```
-
-Then **open Claude Code in this `NTD-Agentic-QCSD-Workshop` folder** — it is your workspace root, so all the paths below are relative to it.
+**Before you start.** Finish the **Setup** in the [README](./README.md) (clone → `npm install -g agentic-qe@3.10.1` → `aqe init --auto` → `npm install`), then open Claude Code in this folder. All paths below are relative to the repo root.
 
 When the four runs are done, head to **Part 4 — Apply PACT** and interrogate the reports.
 
