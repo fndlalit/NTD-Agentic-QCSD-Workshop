@@ -36,13 +36,35 @@ cd NTD-Agentic-QCSD-Workshop
 
 ```bash
 npm install -g agentic-qe@3.10.1   # the AQE CLI (global, one-time)
-aqe init --auto                    # installs the @qe-… agents into ./.claude/agents/
+aqe init --auto                    # set up AQE for YOUR coding agent — see the table below
 npm install                        # the demo app's own dependencies
 ```
 
-**3. Open Claude Code in this folder** — it is your workspace root, and all paths in LAB.md are relative to it.
+`aqe init --auto` configures **Claude Code** by default. Using a different coding agent? Add the matching flag — AQE works with **11 platforms** through a single MCP server:
 
-> The AI agents come from **[Agentic QE](https://github.com/proffesor-for-testing/agentic-qe)**, installed from npm — they are **not** bundled in this repo. `aqe init` copies the agents, skills, and a fresh local memory DB into this folder (all gitignored, so nothing is committed back).
+| Coding agent | `aqe init` command |
+|--------------|--------------------|
+| **Claude Code** | `aqe init --auto` (built-in) |
+| **GitHub Copilot** | `aqe init --auto --with-copilot` |
+| **Cursor** | `aqe init --auto --with-cursor` |
+| **Cline** | `aqe init --auto --with-cline` |
+| **OpenCode** | `aqe init --auto --with-opencode` |
+| **AWS Kiro** | `aqe init --auto --with-kiro` |
+| **Kilo Code** | `aqe init --auto --with-kilocode` |
+| **Roo Code** | `aqe init --auto --with-roocode` |
+| **OpenAI Codex CLI** | `aqe init --auto --with-codex` |
+| **Windsurf** | `aqe init --auto --with-windsurf` |
+| **Continue.dev** | `aqe init --auto --with-continuedev` |
+
+```bash
+aqe init --auto --with-all-platforms   # or just set up everything at once
+```
+
+**3. Launch your coding agent in this folder** — Claude Code, Copilot, Cursor, Kiro, Codex, Windsurf… whichever you have. This folder is your workspace root; all paths in LAB.md are relative to it.
+
+> The agents come from **[Agentic QE](https://github.com/proffesor-for-testing/agentic-qe)** via npm — they are **not** bundled in this repo. `aqe init` writes AQE's agents, skills, MCP config, and a fresh local memory DB into this folder (all gitignored, so nothing is committed back).
+>
+> **Invoking agents:** LAB.md shows **Claude Code** syntax (`@qe-qx-partner …`). In other tools you reach the same AQE fleet through its MCP server — phrase it as **"Use qe-qx-partner to …"** and your assistant will pick up the right agent/tool. Claude Code gives the smoothest run of these exercises.
 
 ➡️ **Next:** open **[LAB.md](./LAB.md)** and start with Exercise 1.
 
