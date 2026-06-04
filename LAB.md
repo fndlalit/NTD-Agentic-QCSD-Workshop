@@ -1,6 +1,6 @@
 # Workshop Lab — Copy-Paste Exercises
 
-A warm-up that builds a **local knowledge graph + a clean memory baseline** (**Exercise 0**), then four SDLC exercises — **Ideation → Refinement → Development → CI/CD** — that each **save their learnings and persist patterns**, then a **Self-Learning** check that *proves the fleet recalls what it saved*, and a **Personal Adoption Roadmap** to close. The four build on each other: Refinement's product-factors ideas feed Development's test generation; CI/CD then verifies the result. Everything indexes and embeds with a **local on-device model — your code never leaves your machine.** Scoped to stay token-cheap so a whole room can run them on personal API keys.
+A warm-up that builds a **local knowledge graph + a clean memory baseline** (**Exercise 0**), then four SDLC exercises — **Ideation → Refinement → Development → CI/CD** — that each **save their learnings and persist patterns**, then a **Self-Learning** step that *turns everything the fleet saved into an instant handoff brief*, and a **Personal Adoption Roadmap** to close. The four build on each other: Refinement's product-factors ideas feed Development's test generation; CI/CD then verifies the result. Everything indexes and embeds with a **local on-device model — your code never leaves your machine.** Scoped to stay token-cheap so a whole room can run them on personal API keys.
 
 **Each SDLC exercise has two prompts — pick the one for your tool:**
 - **Claude Code Users** — use AQE's skills / agents / orchestrator (`/qcsd-ideation-swarm`, `qe-test-architect`, `qe-queen-coordinator`) for the full multi-agent experience.
@@ -169,21 +169,23 @@ and decide on release. Do NOT generate tests — assess what exists:
 
 ---
 
-## Exercise 5 — Self-Learning: prove the fleet recalls what it learned (≈5 min)
+## Exercise 5 — Self-Learning: put the fleet's memory to work (≈5 min)
 
-> *Why:* every exercise above ended with **"Save learnings and persist patterns."** Now close the loop — prove a learning, once saved, can be **recalled** later. That round-trip is institutional knowledge in action. Same prompt for every tool.
+> *Why:* every exercise above ended with **"Save learnings and persist patterns."** Now feel the payoff — the fleet didn't just file those away, it can hand them back **consolidated, on demand**. That's institutional knowledge working *for* you. Same prompt for every tool.
 
 ```
-1. Save a learning to AQE memory under a key you choose — e.g. key
-   workshop/checkout/idempotency-risk, namespace workshop, value = a key
-   finding from your exercises (the contradiction, risk, or verdict).
-2. Retrieve that exact key from AQE memory and confirm the full content
-   comes back — the fleet recalls what it was taught.
-3. Also check the AQE learning dashboard and memory usage to see the
-   broader picture of what's stored.
+Recall what the fleet has learned about this checkout app and consolidate
+it into a one-page brief — top risks, testability gaps, contradictions,
+and the release verdict — framed as either:
+  • an onboarding brief for someone joining the project today, or
+  • a handoff document for the next person enhancing the checkout app.
+
+Pull the learnings from AQE memory (the patterns persisted across
+Exercises 1–4; retrieve a specific one by its key if a recent learning
+hasn't surfaced yet). Save the brief to reports/05-handoff-brief.md.
 ```
 
-**Why recall, not a counter.** The store-and-recall round-trip in steps 1–2 is the reliable proof: what you save, the fleet can read back — across sessions, not just this one. (The live usage counters can lag behind by design — AQE dual-writes and consolidates in the background — so don't be surprised if the totals don't tick up instantly; the retrieve is the proof.) In Claude Code this persistence also happens *automatically*: the ReasoningBank hooks capture every task and the `AQE Learning: N patterns loaded…` banner shows them reloaded next session. Run this workshop again tomorrow and the fleet starts *warmer* than today — that's the self-learning loop.
+**Why this is the benefit.** You didn't re-read four reports — the system reconstructed the project's institutional knowledge in seconds, because every exercise saved what it learned. A new teammate, or the next agent run, inherits all of it instantly. In Claude Code this memory is *also* captured automatically in the background (the ReasoningBank hooks + the `AQE Learning: N patterns loaded…` startup banner); here you watched it pay off. Run the workshop again tomorrow and the fleet starts from this knowledge, not from zero — that's the self-learning loop, and it's why agents that *remember* beat agents that start cold every time.
 
 ---
 

@@ -19,7 +19,7 @@ A short warm-up plus four SDLC exercises and a self-learning close — all copy-
 | **2 · Refinement** | `qe-product-factors-assessor` | What is this product really made of (SFDIPOT), and where's the risk? |
 | **3 · Development** | `qe-test-architect` | Can it turn those ideas into strong, runnable tests for the riskiest module? |
 | **4 · CI/CD** | `qe-queen-coordinator` (verify) | Is this releasable? Coverage + security + a 90% gate → GO / CONDITIONAL / NO-GO. |
-| **5 · Self-Learning** | AQE memory | Prove the loop: save a learning, then recall it by key — institutional knowledge in action. |
+| **5 · Self-Learning** | AQE memory | Put memory to work: have the fleet consolidate everything it learned into an instant onboarding / handoff brief. |
 
 The four SDLC exercises have **two prompt versions** — one for **Claude Code users** (skills / orchestrator) and one for **non-Claude-Code users** (generic step list) — so they work on any tool; Steps 0 and 5 are MCP-tool calls identical everywhere. You then **Apply PACT** to score each agent's output, and finish with a **Personal Adoption Roadmap**. Everything is kept lean and token-cheap so a whole room can run it on personal keys.
 
