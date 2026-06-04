@@ -1,16 +1,14 @@
 # Workshop Lab — Copy-Paste Exercises
 
-A warm-up that builds a **local knowledge graph + a clean memory baseline** (**Exercise 0**), then four SDLC exercises — **Ideation → Refinement → Development → CI/CD** — that each **save their learnings and persist patterns**, then a **Self-Learning** step that *turns everything the fleet saved into an instant handoff brief*, and a **Personal Adoption Roadmap** to close. The four build on each other: Refinement's product-factors ideas feed Development's test generation; CI/CD then verifies the result. Everything indexes and embeds with a **local on-device model — your code never leaves your machine.** Scoped to stay token-cheap so a whole room can run them on personal API keys.
+Six steps on this deliberately-flawed checkout app: **build a local knowledge graph (0) → Ideation → Refinement → Development → CI/CD (1–4) → Self-Learning (5)**, then a **Personal Adoption Roadmap**. The SDLC exercises build on each other (Refinement feeds Development; CI/CD verifies) and each ends by saving its learnings; Step 5 turns those into an instant handoff brief. Everything indexes and embeds with a **local on-device model — your code never leaves your machine** — and it's scoped token-cheap for a whole room on personal keys.
 
-**Each SDLC exercise has two prompts — pick the one for your tool:**
-- **Claude Code Users** — use AQE's skills / agents / orchestrator (`/qcsd-ideation-swarm`, `qe-test-architect`, `qe-queen-coordinator`) for the full multi-agent experience.
-- **Non Claude Code Users** (Copilot, Codex, Gemini, any other tool) — run the *same work as a generic step list*, which goes through the AQE MCP tools your `aqe init --auto --with-<tool>` wired up.
+**Pick your prompt — each SDLC exercise (1–4) has two versions:**
+- **Claude Code Users** — AQE skills / orchestrator (`/qcsd-ideation-swarm`, `qe-test-architect`, `qe-queen-coordinator`).
+- **Non Claude Code Users** (Copilot, Codex, Gemini, …) — the same work as a generic step list via the AQE MCP tools.
 
-Both versions write to the **same report file** and end with **"Save learnings and persist patterns,"** so the **Apply PACT** and **Self-Learning** steps work no matter which you ran.
+Both write to the same report and end with **"Save learnings and persist patterns."** *(Steps 0 and 5 are MCP-tool calls — identical on every tool, no split.)*
 
-**Before you start.** Finish the **Setup** in the [README](./README.md) (clone → `npm install -g agentic-qe@3.10.1` → `aqe init --auto --with-<your-tool>` → `npm install`), then launch your coding agent in this folder. **Don't skip `aqe init`** — it installs AQE's agents, the MCP config, and a local memory DB; without it the prompts have nothing behind them. **Run the exercises in order** — 3 reads 2's output, 4 verifies the code, and 5 measures what 0–4 stored. All paths are relative to the repo root.
-
-> **Why two versions?** Only the four SDLC exercises split by tool: the Claude Code prompts invoke AQE *skills* and the *queen-coordinator* (a fleet of sub-agents); other tools run the same work as an explicit step list. **Exercises 0 and 5 (the knowledge-graph and memory steps) are MCP-tool calls — identical on every tool, no split.**
+**Before you start:** finish the [README](./README.md) Setup (clone → `npm install -g agentic-qe@3.10.1` → `aqe init --auto --with-<your-tool>` → `npm install`), then launch your agent here. **Don't skip `aqe init`** (it installs the agents, MCP config, and memory DB) and **run the exercises in order** (3 reads 2's output; 5 recalls what 0–4 saved). Paths are relative to the repo root.
 
 ---
 
