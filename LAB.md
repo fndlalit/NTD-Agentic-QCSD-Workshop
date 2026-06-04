@@ -6,7 +6,7 @@ The prompts below are deliberately **lean** — they tell each agent *what to lo
 
 **Before you start.** Finish the **Setup** in the [README](./README.md) (clone → `npm install -g agentic-qe@3.10.1` → `aqe init` for your tool → `npm install`), then launch your coding agent in this folder. All paths below are relative to the repo root.
 
-> The prompts use **Claude Code** syntax (`@qe-…`). On any other tool (Copilot, Cursor, Kiro, Codex…), drop the `@` and ask in plain language — e.g. **"Use qe-qx-partner to …"**. AQE runs the same agent fleet through its MCP server on every platform, so the exercise works identically.
+> The prompts name agents generically (`Use qe-… to …`) so they work in **any** tool — Claude Code, Copilot, Cursor, Kiro, Codex, Windsurf. AQE runs the same agent fleet through its MCP server on every platform. *(In Claude Code you can also use the `@qe-…` mention shortcut if you prefer.)*
 
 When the four runs are done, head to **Part 4 — Apply PACT** and interrogate the reports.
 
@@ -17,13 +17,10 @@ When the four runs are done, head to **Part 4 — Apply PACT** and interrogate t
 > *Swarm:* Ideation · *Agent:* `qe-qx-partner` · *Why:* before any code, can a quality engineer actually do their job with what's written?
 
 ```
-@qe-qx-partner
-
-Read requirements/epic-checkout.md,
+Use qe-qx-partner to read requirements/epic-checkout.md,
 user-stories.md, and acceptance-criteria.md as a QX partner.
 
-Save your assessment to
-reports/01-ideation-qx.md.
+Save the assessment to reports/01-ideation-qx.md.
 ```
 
 ---
@@ -33,12 +30,10 @@ reports/01-ideation-qx.md.
 > *Swarm:* Refinement · *Agent:* `qe-product-factors-assessor` · *Why:* break the product down into its real elements before reasoning about coverage.
 
 ```
-@qe-product-factors-assessor
+Use qe-product-factors-assessor to read README.md and walk
+through src to understand the actual product.
 
-Read README.md and walk through
-src to understand the actual product.
-
-Produce a product-factors assessment. Save it to
+Produce a product-factors assessment and save it to
 reports/02-refinement-product-factors.md.
 ```
 
@@ -49,16 +44,12 @@ reports/02-refinement-product-factors.md.
 > *Swarm:* Development · *Agent:* `qe-test-architect` · *Why:* tight scope, visible output (real tests that run), shows AI test design at its strongest.
 
 ```
-@qe-test-architect
+Use qe-test-architect to generate a comprehensive test file for
+the payment-retry logic in src/lib/payment-retry.ts, including
+property-based tests for its invariants.
 
-Generate a comprehensive test file for the payment-retry logic in
-src/lib/payment-retry.ts, including property-based tests for its
-invariants.
-
-Save the test file as
-tests/lib/payment-retry.architect.test.ts
-and a short rationale to
-reports/03-development-tests.md.
+Save the test file as tests/lib/payment-retry.architect.test.ts
+and a short rationale to reports/03-development-tests.md.
 ```
 
 ---
@@ -69,16 +60,15 @@ reports/03-development-tests.md.
 > *Why:* this is the "swarm" demo, but kept deterministic and cheap — parallel static checks, no big generative work.
 
 ```
-@qe-security-scanner @qe-quality-gate @qe-code-reviewer @qe-accessibility-auditor
+Run a curated static-analysis pass on src in parallel using
+qe-security-scanner, qe-code-reviewer, and qe-accessibility-auditor
+(security, code review, and accessibility on the checkout form).
 
-Run a curated static-analysis pass on src
-in parallel — security, code review, and accessibility on the
-checkout form — then have @qe-quality-gate synthesise the findings
-into a quality-gate verdict at an 80% threshold:
-GO / CONDITIONAL / NO-GO, with the top release blockers if any.
+Then use qe-quality-gate to synthesise the findings into a
+quality-gate verdict at an 80% threshold: GO / CONDITIONAL / NO-GO,
+with the top release blockers if any.
 
-Save the consolidated report to
-reports/04-cicd-static-fleet.md.
+Save the consolidated report to reports/04-cicd-static-fleet.md.
 ```
 
 ---
