@@ -33,3 +33,6 @@ npm-debug.log*
 # TypeScript
 *.tsbuildinfo
 next-env.d.ts
+
+# Facilitator-only verbose exercises (local reference, not for participants)
+EXERCISES.md
