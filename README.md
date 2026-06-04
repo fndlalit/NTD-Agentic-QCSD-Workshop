@@ -19,7 +19,7 @@ Four lightweight, copy-paste exercises (in **[LAB.md](./LAB.md)**), one per deli
 | **Development** | `qe-test-architect` | Can it turn those ideas into strong, runnable tests for the riskiest module? |
 | **CI/CD** | `qe-queen-coordinator` (verify) | Is this releasable? Coverage + security + a 90% gate → GO / CONDITIONAL / NO-GO. |
 
-Each exercise has **two prompt versions** — a Claude Code version (skills / orchestrator) and a Copilot/Codex/Gemini version (generic step list) — so it works on any tool. Then, in **Part 4 — Apply PACT**, you score each agent's output. The exercises are kept lean and token-cheap so a whole room can run them on personal keys.
+Each exercise has **two prompt versions** — one for **Claude Code users** (skills / orchestrator) and one for **non-Claude-Code users** (generic step list) — so it works on any tool. Then, in **Part 4 — Apply PACT**, you score each agent's output. The exercises are kept lean and token-cheap so a whole room can run them on personal keys.
 
 ---
 
@@ -61,10 +61,6 @@ aqe init --auto --with-all-platforms   # or just set up everything at once
 ```
 
 **3. Launch your coding agent in this folder** — Claude Code, Copilot, Cursor, Kiro, Codex, Windsurf… whichever you have. This folder is your workspace root; all paths in LAB.md are relative to it.
-
-> The agents come from **[Agentic QE](https://github.com/proffesor-for-testing/agentic-qe)** via npm — they are **not** bundled in this repo. `aqe init` writes AQE's agents, skills, MCP config, and a fresh local memory DB into this folder (all gitignored, so nothing is committed back).
->
-> **What runs where.** Each LAB exercise drives AQE's agents by pointing your coding agent at the agent definition files `aqe init` installed locally — so all three run in **any** tool (Gemini, Codex, Copilot, Claude Code) with no live MCP fleet required. Invoke with `@qe-…` in Claude Code, or **"Use the qe-… agent (read `.claude/agents/v3/qe-….md`) to …"** elsewhere. **One exception:** Exercise 1 *also* offers a Claude-Code-only `/qcsd-ideation-swarm` skill — the orchestrated, flag-driven swarm — which the facilitator demos live; the hands-on version of Exercise 1 works everywhere.
 
 ➡️ **Next:** open **[LAB.md](./LAB.md)** and start with Exercise 1.
 

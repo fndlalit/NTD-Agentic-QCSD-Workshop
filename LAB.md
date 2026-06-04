@@ -3,8 +3,8 @@
 Four focused exercises across the SDLC on this checkout app — **Ideation → Refinement → Development → CI/CD**. They build on each other: Refinement's product-factors ideas feed Development's test generation; CI/CD then verifies the result. Scoped to stay token-cheap so a whole room can run them on personal API keys.
 
 **Each exercise has two prompts — pick the one for your tool:**
-- **Claude Code** — uses AQE's skills / agents / orchestrator (`/qcsd-ideation-swarm`, `qe-test-architect`, `qe-queen-coordinator`) for the full multi-agent experience.
-- **Copilot / Codex / Gemini (and any other tool)** — the *same work as a generic step list*, which runs through the AQE MCP tools your `aqe init --auto --with-<tool>` wired up.
+- **Claude Code Users** — use AQE's skills / agents / orchestrator (`/qcsd-ideation-swarm`, `qe-test-architect`, `qe-queen-coordinator`) for the full multi-agent experience.
+- **Non Claude Code Users** (Copilot, Codex, Gemini, any other tool) — run the *same work as a generic step list*, which goes through the AQE MCP tools your `aqe init --auto --with-<tool>` wired up.
 
 Both versions of an exercise write to the **same report file**, so **Part 4 — Apply PACT** works no matter which you ran.
 
@@ -18,7 +18,7 @@ Both versions of an exercise write to the **same report file**, so **Part 4 — 
 
 > *Phase:* Ideation · *Why:* apply the QE ideation lenses to the epic and render a release gate *before a line of code is written*.
 
-**▸ Claude Code** — the orchestrated ideation swarm:
+**▸ Claude Code Users** — the orchestrated ideation swarm:
 
 ```
 /qcsd-ideation-swarm
@@ -29,7 +29,7 @@ using user-stories.md and acceptance-criteria.md for context.
 Save all reports under reports/01-ideation-swarm/.
 ```
 
-**▸ Copilot / Codex / Gemini** — the same assessment as explicit steps:
+**▸ Non Claude Code Users** — the same assessment as explicit steps:
 
 ```
 Assess the guest-checkout epic before any code is written. Read
@@ -52,27 +52,29 @@ Save the assessment to reports/01-ideation-assessment.md.
 
 > *Phase:* Refinement · *Why:* break the product into its real elements (SFDIPOT) and turn them into prioritised test ideas — which Exercise 3 will use.
 
-**▸ Claude Code** — the product-factors agent:
+**▸ Claude Code Users** — the product-factors agent:
 
 ```
-Use qe-product-factors-assessor to read README.md and walk through src
-to understand the actual product.
+Use qe-product-factors-assessor to analyse the guest-checkout product
+from requirements/epic-checkout.md and requirements/user-stories.md.
 
 Produce a product-factors (SFDIPOT) assessment and save it to
 reports/02-refinement-product-factors.md.
 ```
 
-**▸ Copilot / Codex / Gemini** — the same assessment as explicit steps:
+**▸ Non Claude Code Users** — the same assessment as explicit steps:
 
 ```
-Break the checkout app into its product factors before reasoning about
-coverage. Read README.md and walk through src, then analyse the product
-across the SFDIPOT dimensions:
+Break the checkout product into its product factors before reasoning
+about coverage. Read requirements/epic-checkout.md and
+requirements/user-stories.md, then analyse the product across the
+SFDIPOT dimensions:
 
   Structure, Function, Data, Interfaces, Platform, Operations, Time.
 
-For each dimension, note what's actually there and produce prioritised
-test ideas. Save the assessment to reports/02-refinement-product-factors.md.
+For each dimension, note what the requirements imply and produce
+prioritised test ideas. Save the assessment to
+reports/02-refinement-product-factors.md.
 ```
 
 ---
@@ -81,7 +83,7 @@ test ideas. Save the assessment to reports/02-refinement-product-factors.md.
 
 > *Phase:* Development · *Why:* turn Exercise 2's product-factors ideas into real, runnable tests for the highest-risk module.
 
-**▸ Claude Code** — the test architect:
+**▸ Claude Code Users** — the test architect:
 
 ```
 Use qe-test-architect to generate a comprehensive test file for the
@@ -93,7 +95,7 @@ Save the test file as tests/lib/payment-retry.architect.test.ts and a
 short rationale to reports/03-development-tests.md.
 ```
 
-**▸ Copilot / Codex / Gemini** — the same as explicit steps:
+**▸ Non Claude Code Users** — the same as explicit steps:
 
 ```
 Generate tests for the payment-retry logic in src/lib/payment-retry.ts:
@@ -116,7 +118,7 @@ short rationale to reports/03-development-tests.md.
 
 > *Phase:* CI/CD · *Why:* generate nothing new — *measure, scan, gate, and recommend*. The release decision on code that now has tests.
 
-**▸ Claude Code** — the queen-coordinator orchestrates the verification fleet:
+**▸ Claude Code Users** — the queen-coordinator orchestrates the verification fleet:
 
 ```
 Use qe-queen-coordinator to run a verification-only quality assessment of
@@ -128,7 +130,7 @@ top blockers.
 Save the consolidated report to reports/04-cicd-quality-assessment.md.
 ```
 
-**▸ Copilot / Codex / Gemini** — the same as explicit steps:
+**▸ Non Claude Code Users** — the same as explicit steps:
 
 ```
 Run a verification-only quality assessment of src/lib/payment-retry.ts
@@ -158,4 +160,4 @@ For each report, ask:
 
 In pairs, score each report 0–3 per property. Share the most surprising weakness.
 
-> **Compare engines.** If your pair has both a Claude Code user and a Copilot/Codex/Gemini user, diff the two reports for the same exercise: did the orchestrated swarm surface anything the step-list version missed (or vice versa)? That gap *is* the value of the orchestration layer.
+> **Compare engines.** If your pair has both a Claude Code user and a non-Claude-Code user, diff the two reports for the same exercise: did the orchestrated swarm surface anything the step-list version missed (or vice versa)? That gap *is* the value of the orchestration layer.
