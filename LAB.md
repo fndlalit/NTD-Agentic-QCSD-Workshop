@@ -1,6 +1,6 @@
 # Workshop Lab — Copy-Paste Exercises
 
-A warm-up that builds a **local knowledge graph + a clean memory baseline** (**Exercise 0**), then four SDLC exercises — **Ideation → Refinement → Development → CI/CD** — that each **save their learnings and persist patterns**, then a **Self-Learning** check that *measures how much the fleet's memory grew*, and a **Personal Adoption Roadmap** to close. The four build on each other: Refinement's product-factors ideas feed Development's test generation; CI/CD then verifies the result. Everything indexes and embeds with a **local on-device model — your code never leaves your machine.** Scoped to stay token-cheap so a whole room can run them on personal API keys.
+A warm-up that builds a **local knowledge graph + a clean memory baseline** (**Exercise 0**), then four SDLC exercises — **Ideation → Refinement → Development → CI/CD** — that each **save their learnings and persist patterns**, then a **Self-Learning** check that *proves the fleet recalls what it saved*, and a **Personal Adoption Roadmap** to close. The four build on each other: Refinement's product-factors ideas feed Development's test generation; CI/CD then verifies the result. Everything indexes and embeds with a **local on-device model — your code never leaves your machine.** Scoped to stay token-cheap so a whole room can run them on personal API keys.
 
 **Each SDLC exercise has two prompts — pick the one for your tool:**
 - **Claude Code Users** — use AQE's skills / agents / orchestrator (`/qcsd-ideation-swarm`, `qe-test-architect`, `qe-queen-coordinator`) for the full multi-agent experience.
@@ -24,8 +24,8 @@ Both versions write to the **same report file** and end with **"Save learnings a
    note the node and edge counts — that's your local map of the codebase.
 2. Confirm the engine is local: get the AQE embedding stats and note the
    model name (all-MiniLM-L6-v2) and dimension (384).
-3. Capture your starting baseline — you will compare it in Exercise 5:
-   get AQE memory usage and write down the total entries and vectors.
+3. Note your starting point: get AQE memory usage (total entries and
+   vectors) so you have a sense of what's there before you begin.
 ```
 
 > *Heads-up:* the code-index tool's inline summary may show `symbolsExtracted: 0` — ignore it; the **real** counts (nodes / edges) are in the saved `.agentic-qe/results/code-index/…json` file.
@@ -169,22 +169,21 @@ and decide on release. Do NOT generate tests — assess what exists:
 
 ---
 
-## Exercise 5 — Self-Learning: measure the knowledge you built (≈5 min)
+## Exercise 5 — Self-Learning: prove the fleet recalls what it learned (≈5 min)
 
-> *Why:* every exercise above ended with **"Save learnings and persist patterns."** Now measure it — the fleet didn't start and end at zero; it accumulated institutional knowledge as you worked. Same prompt for every tool.
+> *Why:* every exercise above ended with **"Save learnings and persist patterns."** Now close the loop — prove a learning, once saved, can be **recalled** later. That round-trip is institutional knowledge in action. Same prompt for every tool.
 
 ```
-Compare against the baseline you captured in Exercise 0:
-
-1. Get AQE memory usage again — total entries and vectors. They have grown
-   since Exercise 0, because each exercise saved its learnings.
-2. Show what the fleet learned — open the AQE learning dashboard (or query
-   memory) to list the patterns now stored.
-3. Retrieve one stored pattern and confirm the full content comes back —
-   the fleet can recall it, across sessions, not just this one.
+1. Save a learning to AQE memory under a key you choose — e.g. key
+   workshop/checkout/idempotency-risk, namespace workshop, value = a key
+   finding from your exercises (the contradiction, risk, or verdict).
+2. Retrieve that exact key from AQE memory and confirm the full content
+   comes back — the fleet recalls what it was taught.
+3. Also check the AQE learning dashboard and memory usage to see the
+   broader picture of what's stored.
 ```
 
-**Before → after.** At Exercise 0 you recorded a baseline entry/vector count; after the four exercises it's higher — institutional knowledge, accumulated and recallable. In Claude Code this *also* happens automatically in the background (the ReasoningBank hooks + the `AQE Learning: N patterns loaded…` startup banner); here you watched it grow explicitly. Run this workshop again tomorrow and the fleet starts *warmer* than today — that's the self-learning loop.
+**Why recall, not a counter.** The store-and-recall round-trip in steps 1–2 is the reliable proof: what you save, the fleet can read back — across sessions, not just this one. (The live usage counters can lag behind by design — AQE dual-writes and consolidates in the background — so don't be surprised if the totals don't tick up instantly; the retrieve is the proof.) In Claude Code this persistence also happens *automatically*: the ReasoningBank hooks capture every task and the `AQE Learning: N patterns loaded…` banner shows them reloaded next session. Run this workshop again tomorrow and the fleet starts *warmer* than today — that's the self-learning loop.
 
 ---
 
