@@ -1,4 +1,4 @@
-# Checkout Demo
+# NTD — Agentic QCSD Workshop
 
 A small, realistic **Next.js 14 e-commerce checkout app** used as the *subject under test* for an **Agentic QE (AQE)** workshop. It behaves like a real store — catalog, cart, Stripe checkout, confirmation — and **deliberately contains realistic quality issues** (validation gaps, accessibility misses, fragile payment-retry logic, weak input handling) for the AI agents — and you — to find.
 
@@ -6,7 +6,7 @@ A small, realistic **Next.js 14 e-commerce checkout app** used as the *subject u
 
 ## Setup
 
-You're already in the `checkout-demo` folder (you cloned or downloaded it). Run these three commands once:
+You're already in the `NTD-Agentic-QCSD-Workshop` folder (you cloned or downloaded it). Run these three commands once:
 
 ```bash
 npm install -g agentic-qe@3.10.1   # 1. AQE CLI (global, one-time)
@@ -18,7 +18,7 @@ Then **open Claude Code in this folder** — it is your workspace root.
 
 > The AI agents come from **[Agentic QE](https://github.com/proffesor-for-testing/agentic-qe)** and are installed from npm — they are **not** bundled in this repo. `aqe init` copies the agents, skills, and a fresh local memory DB into this folder (all gitignored, so nothing is committed back).
 
-*(Don't have the repo yet? `git clone https://github.com/fndlalit/checkout-demo && cd checkout-demo`, then run the steps above.)*
+*(Don't have the repo yet? `git clone https://github.com/fndlalit/NTD-Agentic-QCSD-Workshop && cd NTD-Agentic-QCSD-Workshop`, then run the steps above.)*
 
 ---
 
@@ -47,23 +47,12 @@ Coverage is **intentionally uneven** — some modules and UI states are left unt
 
 ---
 
-## Optional
-
-**Run the existing tests:**
+## Running the tests (optional)
 
 ```bash
 npm run test:run        # single run
 npm run test:coverage   # with coverage
 ```
-
-**Run the live app** (not needed for the exercises — only if you want to click through the store):
-
-```bash
-cp .env.example .env.local   # add Stripe TEST keys from https://dashboard.stripe.com/test/apikeys
-npm run dev                  # http://localhost:3000
-```
-
-> Use **Stripe test keys only**. Never commit real keys or a real `.env.local`.
 
 ---
 

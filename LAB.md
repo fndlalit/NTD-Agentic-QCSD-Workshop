@@ -7,14 +7,14 @@ The prompts below are deliberately **lean** — they tell each agent *what to lo
 **Before you start.** Run these once, in order:
 
 ```bash
-git clone https://github.com/fndlalit/checkout-demo
-cd checkout-demo
+git clone https://github.com/fndlalit/NTD-Agentic-QCSD-Workshop
+cd NTD-Agentic-QCSD-Workshop
 npm install -g agentic-qe@3.10.1   # installs the AQE CLI (global)
 aqe init --auto                    # installs the @qe-… agents into ./.claude/agents/
 npm install                        # the app's own dependencies
 ```
 
-Then **open Claude Code in this `checkout-demo` folder** — it is your workspace root, so all the paths below are relative to it.
+Then **open Claude Code in this `NTD-Agentic-QCSD-Workshop` folder** — it is your workspace root, so all the paths below are relative to it.
 
 When the four runs are done, head to **Part 4 — Apply PACT** and interrogate the reports.
 
