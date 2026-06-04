@@ -2,13 +2,13 @@
 
 A warm-up that builds a **local knowledge graph + a clean memory baseline** (**Exercise 0**), then four SDLC exercises — **Ideation → Refinement → Development → CI/CD** — that each **persist what they learn**, then a **Self-Learning** check that *measures how much the fleet's memory grew*, and a **Personal Adoption Roadmap** to close. The four build on each other: Refinement's product-factors ideas feed Development's test generation; CI/CD then verifies the result. Everything indexes and embeds with a **local on-device model — your code never leaves your machine.** Scoped to stay token-cheap so a whole room can run them on personal API keys.
 
-**Each exercise has two prompts — pick the one for your tool:**
+**Each SDLC exercise has two prompts — pick the one for your tool:**
 - **Claude Code Users** — use AQE's skills / agents / orchestrator (`/qcsd-ideation-swarm`, `qe-test-architect`, `qe-queen-coordinator`) for the full multi-agent experience.
 - **Non Claude Code Users** (Copilot, Codex, Gemini, any other tool) — run the *same work as a generic step list*, which goes through the AQE MCP tools your `aqe init --auto --with-<tool>` wired up.
 
-Both versions of an exercise write to the **same report file**, so the **Apply PACT** step works no matter which you ran.
+Both versions write to the **same report file** and end with the **same persist step**, so the **Apply PACT** and **Self-Learning** steps work no matter which you ran.
 
-**Before you start.** Finish the **Setup** in the [README](./README.md) (clone → `npm install -g agentic-qe@3.10.1` → `aqe init --auto --with-<your-tool>` → `npm install`), then launch your coding agent in this folder. **Don't skip `aqe init`** — it installs AQE's agents, the MCP config, and a local memory DB; without it the prompts have nothing behind them. **Run the exercises in order** — 3 reads 2's output, and 4 verifies the code. All paths are relative to the repo root.
+**Before you start.** Finish the **Setup** in the [README](./README.md) (clone → `npm install -g agentic-qe@3.10.1` → `aqe init --auto --with-<your-tool>` → `npm install`), then launch your coding agent in this folder. **Don't skip `aqe init`** — it installs AQE's agents, the MCP config, and a local memory DB; without it the prompts have nothing behind them. **Run the exercises in order** — 3 reads 2's output, 4 verifies the code, and 5 measures what 0–4 stored. All paths are relative to the repo root.
 
 > **Why two versions?** Only the four SDLC exercises split by tool: the Claude Code prompts invoke AQE *skills* and the *queen-coordinator* (a fleet of sub-agents); other tools run the same work as an explicit step list. **Exercises 0 and 5 (the knowledge-graph and memory steps) are MCP-tool calls — identical on every tool, no split.**
 
@@ -48,8 +48,11 @@ workshop-namespace count (0).
 
 Analyze the guest-checkout epic in requirements/epic-checkout.md,
 using user-stories.md and acceptance-criteria.md for context.
-
 Save all reports under reports/01-ideation-swarm/.
+
+Then store your single most important finding in AQE memory — key
+workshop/ideation/top-finding, namespace workshop, value = the finding
+text and its severity.
 ```
 
 **▸ Non Claude Code Users** — the same assessment as explicit steps:
@@ -65,11 +68,10 @@ acceptance-criteria.md for context), then:
 3. Validate requirements completeness and testability — flag gaps,
    contradictions, and unmeasurable acceptance criteria
 4. Render a single GO / CONDITIONAL / NO-GO verdict with the top blockers
-
-Save the assessment to reports/01-ideation-assessment.md.
+5. Save the assessment to reports/01-ideation-assessment.md
+6. Store your top finding in AQE memory — key workshop/ideation/top-finding,
+   namespace workshop, value = the finding text and its severity
 ```
-
-> **Then persist what you learned** (any tool): store your top finding in AQE memory — key `workshop/ideation/top-finding`, namespace `workshop`, value = the finding text + its severity. You'll count these in Exercise 5.
 
 ---
 
@@ -82,9 +84,11 @@ Save the assessment to reports/01-ideation-assessment.md.
 ```
 Use qe-product-factors-assessor to analyse the guest-checkout product
 from requirements/epic-checkout.md and requirements/user-stories.md.
-
 Produce a product-factors (SFDIPOT) assessment and save it to
 reports/02-refinement-product-factors.md.
+
+Then store the top product risk in AQE memory — key
+workshop/refinement/top-risk, namespace workshop.
 ```
 
 **▸ Non Claude Code Users** — the same assessment as explicit steps:
@@ -97,12 +101,13 @@ SFDIPOT dimensions:
 
   Structure, Function, Data, Interfaces, Platform, Operations, Time.
 
-For each dimension, note what the requirements imply and produce
-prioritised test ideas. Save the assessment to
-reports/02-refinement-product-factors.md.
+Then:
+1. For each dimension, note what the requirements imply and produce
+   prioritised test ideas
+2. Save the assessment to reports/02-refinement-product-factors.md
+3. Store the top product risk in AQE memory — key
+   workshop/refinement/top-risk, namespace workshop
 ```
-
-> **Then persist what you learned** (any tool): store the top product risk in AQE memory — key `workshop/refinement/top-risk`, namespace `workshop`.
 
 ---
 
@@ -117,9 +122,11 @@ Use qe-test-architect to generate a comprehensive test file for the
 payment-retry logic in src/lib/payment-retry.ts. Use the test ideas in
 reports/02-refinement-product-factors.md as input, and include
 property-based tests for the module's invariants.
-
 Save the test file as tests/lib/payment-retry.architect.test.ts and a
 short rationale to reports/03-development-tests.md.
+
+Then store a key test-design insight in AQE memory — key
+workshop/development/insight, namespace workshop.
 ```
 
 **▸ Non Claude Code Users** — the same as explicit steps:
@@ -132,14 +139,13 @@ Generate tests for the payment-retry logic in src/lib/payment-retry.ts:
    cases, error paths, and the module's invariants (use property-style
    tests where useful — e.g. idempotency, backoff bounds, retry limits)
 3. Make sure the file imports from src/lib/payment-retry.ts and runs
-
-Save the test file as tests/lib/payment-retry.architect.test.ts and a
-short rationale to reports/03-development-tests.md.
+4. Save the test file as tests/lib/payment-retry.architect.test.ts and a
+   short rationale to reports/03-development-tests.md
+5. Store a key test-design insight in AQE memory — key
+   workshop/development/insight, namespace workshop
 ```
 
 > *Tip:* after this runs, `npm test -- --run tests/lib/payment-retry.architect.test.ts` to see the generated tests actually execute.
->
-> **Then persist what you learned** (any tool): store a key test-design insight in AQE memory — key `workshop/development/insight`, namespace `workshop`.
 
 ---
 
@@ -155,8 +161,10 @@ src/lib/payment-retry.ts (do NOT generate tests). Analyse coverage gaps
 with risk scoring, security-scan the module, apply a 90% quality gate,
 and give a GO / CONDITIONAL / NO-GO deployment recommendation with the
 top blockers.
-
 Save the consolidated report to reports/04-cicd-quality-assessment.md.
+
+Then store the release verdict and top blocker in AQE memory — key
+workshop/cicd/verdict, namespace workshop.
 ```
 
 **▸ Non Claude Code Users** — the same as explicit steps:
@@ -170,19 +178,18 @@ and decide on release. Do NOT generate tests — assess what exists:
 3. Apply a quality gate at a 90% threshold
 4. Give a deployment recommendation (GO / CONDITIONAL / NO-GO) with the
    top release blockers, if any
-
-Save the consolidated report to reports/04-cicd-quality-assessment.md.
+5. Save the consolidated report to reports/04-cicd-quality-assessment.md
+6. Store the release verdict and top blocker in AQE memory — key
+   workshop/cicd/verdict, namespace workshop
 ```
 
 > *Note:* this app keeps its testable logic in `src/lib/` (payment, Luhn, validation, rate-limiting, email) — there is **no `src/services/`**. Scoped to one file so the run finishes fast; widen to `src/lib/` for a broader verification.
->
-> **Then persist what you learned** (any tool): store the release verdict + top blocker in AQE memory — key `workshop/cicd/verdict`, namespace `workshop`.
 
 ---
 
 ## Exercise 5 — Self-Learning: measure the knowledge you built (≈5 min)
 
-> *Why:* across Exercises 1–4 you told the fleet to **persist** what it learned. Now measure it — the fleet didn't start and end at zero; it accumulated institutional knowledge. Same prompt for every tool.
+> *Why:* across Exercises 1–4 each prompt's final step **persisted** what it learned. Now measure it — the fleet didn't start and end at zero; it accumulated institutional knowledge. Same prompt for every tool.
 
 ```
 Compare against the baseline you captured in Exercise 0:
