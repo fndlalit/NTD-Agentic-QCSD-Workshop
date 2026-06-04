@@ -20,29 +20,25 @@ A six-product electronics/accessories storefront with a complete purchase flow:
 - **Tailwind CSS**
 - **Vitest** + **Testing Library** for unit/component tests
 
-## Getting started
-
-```bash
-# 1. Install dependencies
-npm install
-
-# 2. Add your Stripe TEST keys
-cp .env.example .env.local
-#   then edit .env.local with keys from https://dashboard.stripe.com/test/apikeys
-
-# 3. Run the dev server
-npm run dev          # http://localhost:3000
-```
-
 ## Running the tests
 
 ```bash
-npm test             # watch mode
+npm install          # one-time, installs dev dependencies
 npm run test:run     # single run
 npm run test:coverage
 ```
 
 The test suite covers the cart reducer, product catalog, validation, the card/Luhn logic, payment retry, rate limiting, email validation, guest sessions, order publishing, and the checkout/product components. Coverage is intentionally uneven — some modules and UI states are left untested on purpose.
+
+## Running the app (optional — not needed for the workshop)
+
+The AQE exercises below are all static analysis, so you do **not** need to run the app or set up Stripe to complete them. If you *want* to click through the live store:
+
+```bash
+cp .env.example .env.local   # then add Stripe TEST keys from
+                             # https://dashboard.stripe.com/test/apikeys
+npm run dev                  # http://localhost:3000
+```
 
 ## Quality-engineering practice
 
